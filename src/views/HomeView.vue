@@ -4,4 +4,6 @@
 
 <template>
   Home View
+
+  
 </template>
