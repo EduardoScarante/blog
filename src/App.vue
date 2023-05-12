@@ -25,7 +25,9 @@ export default {
     submitForm(event) {
       event.preventDefault()
 
-      this.posts.push(this.formData)
+      let data = {...this.formData}
+
+      this.posts.push(data)
     },
     keyUpForm(event) {
       const inputName = event.target.name
