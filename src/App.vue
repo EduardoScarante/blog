@@ -86,10 +86,13 @@ export default {
     <input v-model="formData.title" placeholder="Título">
     <textarea v-model="formData.content" placeholder="Message"></textarea>
 
-    <button type="submit" @click="submitForm">Submit</button>
+    <button type="submit" @click="submitForm">Criar</button>
   </form>
 
-  <input type="text" v-model="titleSearch" placeholder="Procure pelo título do post...:">
+
+  <div id="searchBox">
+    <input id="searchInput" type="text" v-model="titleSearch" placeholder="Procure pelo título do Post...">
+  </div>
 
   <div id="lista-posts">
     <div class="post center" v-for="x in filteredPost" :key="x.title">
@@ -102,18 +105,25 @@ export default {
   <!--   <RouterView /> -->
 </template>
 
-
 <style>
 form {
-  width: 99vw;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  position: sticky;
+  margin-bottom: 10px;
 }
 
-form>* {
+#searchBox{
+  text-align: center;
+
+  border-top: 1px solid #cacaca;
+
+  padding-top: 10px;
+}
+
+form>*,
+#searchInput {
   background-color: white;
   box-shadow: 3px 3px 15px lightgray;
   border: none;
@@ -150,11 +160,10 @@ form button:hover {
 
   justify-content: center;
 
-  margin-top: 50px;
+  justify-content: center;
 }
 
 .post {
-  margin: 10px;
   background-color: white;
   height: 200px;
   width: 270px;
@@ -163,10 +172,17 @@ form button:hover {
 
   border-radius: 10px;
   padding: 10px;
+
+  margin: 10px;
 }
 
 @media (max-width: 600px) {
-  form>* {
+  form>*,
+  #searchInput {
+    width: 87vw;
+  }
+
+  .post{
     width: 100vw;
   }
 }
