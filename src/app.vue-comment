@@ -9,28 +9,12 @@ export default {
         {
           title: 'Primeiro Post',
           content: 'Conteudo do post :)',
-          datetime: '15/5/2023'
+
         },
         {
           title: 'Meu Segundo Post',
           content: 'Conteudo do segundo post :)',
-          datetime: '15/5/2023'
-        }
-        ,
-        {
-          title: 'Esse é o Terceiro Post',
-          content: 'Conteudo do Terceiro post :)',
-          datetime: '16/5/2023'
-        },
-        {
-          title: 'Pode ser que essa seja o quarto Post',
-          content: 'Conteudo do quarto post :(',
-          datetime: '16/5/2023'
-        },
-        {
-          title: 'Esse eu tenho certeza que é o quinto post',
-          content: 'Conteudo do quinto post :)',
-          datetime: '16/5/2023'
+
         }
       ],
       titleSearch: ''
@@ -39,6 +23,13 @@ export default {
   methods: {
     submitForm(event) {
       event.preventDefault()
+
+
+      //this.posts.push({ ...this.formData })
+
+      //Para resetar o valor dos formulários 
+      //document.getElementById("form").reset()
+      //retirar o @value do form
 
       let now = new Date()
       let dataDaPostagem = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`
@@ -50,31 +41,16 @@ export default {
       })
 
       this.formData = {}
+
     },
-  },
-  computed: {
-    filteredPost() {
-      /*       
-        const listaFinal = []
-        for (const post of this.posts) {
-          if (post.title.includes(this.titleSearch)) {
-            listaFinal.push(post)
-          }
-        } 
-      */
+    keyUpForm(event) {
+      //const inputName = event.target.name
+      //const inputValue = event.target.value
+      //this.formData[inputName] = inputValue
 
-      /* Forma mais reduzida
-      return this.posts.filter((item) => item.title.includes(this.titleSearch))
-      */
-
-      //Se caso o search estiver vazio, haverá retorno de todos os posts
-      // GUARD -> impede que o código seja executado sem que exista real necessidade
-      if (!this.titleSearch) return this.posts
-
-      return this.posts.filter((item) => {
-        return item.title.includes(this.titleSearch)
-      })
-
+      // Conceito de descontruir objeto
+      /*    const { name, value } = event.target
+            this.formData[name] = value */
     }
   }
 }
@@ -83,6 +59,25 @@ export default {
 
 <template>
   <form id="form" action="">
+    <!--     <input 
+        name="title" 
+        placeholder="Título" 
+        @keyup="keyUpForm"
+        :value="formData.title"
+        > -->
+
+    <!--     <textarea 
+        name="content" 
+        id="" 
+        cols="30" 
+        rows="10" 
+        placeholder="Conteúdo" 
+        @keyup="keyUpForm"
+        :value="formData.content"
+        ></textarea> -->
+
+    <!-- Conceito de v-model, faz a ligação com o objeto formData no objeto title - conceito de two way data-binding -->
+
     <input v-model="formData.title" placeholder="Título">
     <textarea v-model="formData.content" placeholder="Message"></textarea>
 
@@ -90,9 +85,10 @@ export default {
   </form>
 
   <input type="text" v-model="titleSearch" placeholder="Procure pelo título do post...:">
+  {{ titleSearch }}
 
   <div id="lista-posts">
-    <div class="post center" v-for="x in filteredPost" :key="x.title">
+    <div class="post center" v-for="x in posts" :key="x.title">
       <h3>{{ x.title }}</h3>
       <h4>{{ x.datetime }}</h4>
       <p>{{ x.content }}</p>
