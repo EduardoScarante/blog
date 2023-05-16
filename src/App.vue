@@ -100,9 +100,27 @@ export default {
 
 <style>
 form {
-  width: 300px;
+  width: 100vw;
   display: flex;
   flex-direction: column;
+
+  position: absolute;
+  bottom: 5px;
+  margin: auto;
+}
+
+form > *{
+  background-color: white;
+  box-shadow: 3px 3px 15px lightgray;
+  border: none;
+
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  
+  border-radius: 2px;
+  margin-top: 4px;
+
+  padding: 10px;
+
 }
 
 #lista-posts {
@@ -113,9 +131,11 @@ form {
 
 .post {
   margin: 10px;
-  background-color: lightgray;
+  background-color: white;
   height: 200px;
   width: 300px;
+
+  box-shadow: 4px 4px 15px lightgray;
 
   border-radius: 10px;
   padding: 10px;
