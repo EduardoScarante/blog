@@ -100,13 +100,13 @@ export default {
 
 <style>
 form {
-  width: 100vw;
+  width: 99vw;
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   position: absolute;
   bottom: 5px;
-  margin: auto;
 }
 
 form > *{
@@ -116,11 +116,19 @@ form > *{
 
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   
-  border-radius: 2px;
-  margin-top: 4px;
-
+  width: 500px;
   padding: 10px;
+  margin-top: 5px;
 
+  border: 3px;
+}
+
+form button{
+  background-color: rgb(53, 53, 53);
+  color: whitesmoke;
+  font-weight: 800;
+  width: 100px;
+  border-radius: 10px
 }
 
 #lista-posts {
