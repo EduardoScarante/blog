@@ -57,32 +57,23 @@ export default {
 </script>
 
 <template>
-  <div id="lista-posts">
-    <div class="post center" v-for="x in posts" :key="x.title">
-      <h3>{{ x.title }}</h3>
-      <h4>{{ x.datetime }}</h4>
-      <p>{{ x.content }}</p>
-    </div>
-  </div>
-
-
   <form id="form" action="">
     <!--     <input 
-      name="title" 
-      placeholder="Título" 
-      @keyup="keyUpForm"
-      :value="formData.title"
-      > -->
+        name="title" 
+        placeholder="Título" 
+        @keyup="keyUpForm"
+        :value="formData.title"
+        > -->
 
     <!--     <textarea 
-      name="content" 
-      id="" 
-      cols="30" 
-      rows="10" 
-      placeholder="Conteúdo" 
-      @keyup="keyUpForm"
-      :value="formData.content"
-      ></textarea> -->
+        name="content" 
+        id="" 
+        cols="30" 
+        rows="10" 
+        placeholder="Conteúdo" 
+        @keyup="keyUpForm"
+        :value="formData.content"
+        ></textarea> -->
 
     <!-- Conceito de v-model, faz a ligação com o objeto formData no objeto title - conceito de two way data-binding -->
 
@@ -92,7 +83,13 @@ export default {
     <button type="submit" @click="submitForm">Submit</button>
   </form>
 
-
+  <div id="lista-posts">
+    <div class="post center" v-for="x in posts" :key="x.title">
+      <h3>{{ x.title }}</h3>
+      <h4>{{ x.datetime }}</h4>
+      <p>{{ x.content }}</p>
+    </div>
+  </div>
 
   <!--   <RouterView /> -->
 </template>
@@ -105,17 +102,16 @@ form {
   flex-direction: column;
   align-items: center;
 
-  position: absolute;
-  bottom: 5px;
+  position: sticky;
 }
 
-form > *{
+form>* {
   background-color: white;
   box-shadow: 3px 3px 15px lightgray;
   border: none;
 
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  
+
   width: 500px;
   padding: 10px;
   margin-top: 5px;
@@ -123,29 +119,47 @@ form > *{
   border: 3px;
 }
 
-form button{
+form button {
   background-color: rgb(53, 53, 53);
   color: whitesmoke;
   font-weight: 800;
   width: 100px;
-  border-radius: 10px
+  border-radius: 10px;
+
+  transition: 0.5s;
 }
+
+form button:hover {
+  background-color: #2b1a1a;
+  box-shadow: 3px 3px 1px lightcoral;
+}
+
 
 #lista-posts {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+
+  justify-content: center;
+
+  margin-top: 50px;
 }
 
 .post {
   margin: 10px;
   background-color: white;
   height: 200px;
-  width: 300px;
+  width: 270px;
 
   box-shadow: 4px 4px 15px lightgray;
 
   border-radius: 10px;
   padding: 10px;
+}
+
+@media (max-width: 600px) {
+  form>* {
+    width: 100vw;
+  }
 }
 </style>
