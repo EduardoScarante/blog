@@ -4,17 +4,15 @@ import { RouterLink, RouterView } from 'vue-router'
 export default {
   data() {
     return {
-      formData: [],
+      formData: {},
       posts: [
         {
           title: 'Primeiro Post',
-          datetime: Date.now(),
           content: 'Conteudo do post :)',
 
         },
         {
           title: 'Meu Segundo Post',
-          datetime: Date.now(),
           content: 'Conteudo do segundo post :)',
 
         }
@@ -25,15 +23,33 @@ export default {
     submitForm(event) {
       event.preventDefault()
 
-      let data = {...this.formData}
 
-      this.posts.push(data)
+      //this.posts.push({ ...this.formData })
+
+      //Para resetar o valor dos formulários 
+      //document.getElementById("form").reset()
+      //retirar o @value do form
+
+      let now = new Date()
+      let dataDaPostagem = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`
+
+      this.posts.push({
+        title: this.formData.title,
+        content: this.formData.content,
+        datetime: dataDaPostagem
+      })
+
+      this.formData = {}
+
     },
     keyUpForm(event) {
-      const inputName = event.target.name
-      const inputValue = event.target.value
+      //const inputName = event.target.name
+      //const inputValue = event.target.value
+      //this.formData[inputName] = inputValue
 
-      this.formData[inputName] = inputValue
+      // Conceito de descontruir objeto
+      /*    const { name, value } = event.target
+            this.formData[name] = value */
     }
   }
 }
@@ -49,9 +65,29 @@ export default {
     </div>
   </div>
 
-  <form action="">
-    <input name="title" placeholder="Título" @keyup="keyUpForm">
-    <textarea name="content" id="" cols="30" rows="10" placeholder="Conteúdo" @keyup="keyUpForm"></textarea>
+
+  <form id="form" action="">
+    <!--     <input 
+      name="title" 
+      placeholder="Título" 
+      @keyup="keyUpForm"
+      :value="formData.title"
+      > -->
+
+    <!--     <textarea 
+      name="content" 
+      id="" 
+      cols="30" 
+      rows="10" 
+      placeholder="Conteúdo" 
+      @keyup="keyUpForm"
+      :value="formData.content"
+      ></textarea> -->
+
+    <!-- Conceito de v-model, faz a ligação com o objeto formData no objeto title - conceito de two way data-binding -->
+
+    <input v-model="formData.title" placeholder="Título">
+    <textarea v-model="formData.content" placeholder="Message"></textarea>
 
     <button type="submit" @click="submitForm">Submit</button>
   </form>
@@ -64,9 +100,27 @@ export default {
 
 <style>
 form {
-  width: 300px;
+  width: 100vw;
   display: flex;
   flex-direction: column;
+
+  position: absolute;
+  bottom: 5px;
+  margin: auto;
+}
+
+form > *{
+  background-color: white;
+  box-shadow: 3px 3px 15px lightgray;
+  border: none;
+
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  
+  border-radius: 2px;
+  margin-top: 4px;
+
+  padding: 10px;
+
 }
 
 #lista-posts {
@@ -77,8 +131,13 @@ form {
 
 .post {
   margin: 10px;
-  background-color: lightgray;
+  background-color: white;
   height: 200px;
   width: 300px;
+
+  box-shadow: 4px 4px 15px lightgray;
+
+  border-radius: 10px;
+  padding: 10px;
 }
 </style>

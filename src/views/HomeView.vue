@@ -5,5 +5,4 @@
 <template>
   Home View
 
-  
 </template>
