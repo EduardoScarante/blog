@@ -1,7 +1,7 @@
 <script>
-export default{
-  data(){
-    return{
+export default {
+  data() {
+    return {
       titleSearch: ''
     }
   },
@@ -27,24 +27,29 @@ export default{
 </script>
 
 <template>
-  <div id="searchBox">
-    <input id="searchInput" type="text" v-model="titleSearch" placeholder="Procure pelo título do Post...">
-  </div>
+  <div class="container">
+    <div id="searchBox">
+      <input id="searchInput" type="text" v-model="titleSearch" placeholder="Procure pelo título do Post...">
+    </div>
 
-  <div id="lista-posts">
-    <div 
-          class="post center" v-for="x in 
-          filteredPost" 
-          :key="x.title"
-        >
-      <h3>{{ x.title }}</h3>
-      <h4>{{ x.datetime }}</h4>
-      <p>{{ x.content }}</p>
+    <div id="lista-posts">
+      <div class="post center" v-for="x in 
+                filteredPost" :key="x.title">
+        <div>
+          <h3>{{ x.title }}</h3>
+          <p>{{ x.content }}</p>
+        </div>
+        <h4><i>{{ x.datetime }}</i></h4>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.container{
+  width: 104vw;
+}
+
 #searchInput {
   background-color: white;
   box-shadow: 3px 3px 15px lightgray;
@@ -73,10 +78,16 @@ export default{
   justify-content: center;
 
   justify-content: center;
+
 }
 
 .post {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   background-color: white;
+
   height: 200px;
   width: 270px;
 
@@ -84,15 +95,21 @@ export default{
 
   border-radius: 10px;
   padding: 10px;
-
   margin: 10px;
+}
+
+.post h4 {
+  font-weight: 100;
+  color: #535353;
+
+  text-align: end;
 }
 
 @media (max-width: 600px) {
 
   form>*,
   #searchInput {
-    width: 87vw;
+    width: 100vw;
   }
 
   .post {

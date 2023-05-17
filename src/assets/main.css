@@ -1,7 +1,13 @@
 @import "form.css";
 
+html{
+  width: 100vw;
+  margin: auto;
+}
+
 body {
   margin: 0px;
   padding: 0px;
 
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
