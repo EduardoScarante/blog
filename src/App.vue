@@ -35,8 +35,8 @@ export default {
       ]
     }
   },
-  methods:{
-    addPost(objeto){
+  methods: {
+    addPost(objeto) {
       this.posts.push(objeto)
     }
   }
@@ -46,20 +46,38 @@ export default {
 
 <template>
   <header>
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/create">Novo Post</RouterLink>
+    <nav>
+      <RouterLink to="/">Home
+      </RouterLink>
+      <RouterLink to="/create">Novo Post</RouterLink>
+    </nav>
   </header>
 
   <!-- ESCUTA EVENTO E RECEBE OBJETO NA FUNÇÂO ADDPOST -->
-  <RouterView :posts="posts" @create-post="addPost"/>
+  <RouterView :posts="posts" @create-post="addPost" />
 </template>
 
 <style>
-header{
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+nav {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  font-weight: 200;
+
+  box-shadow: 4px 4px 15px lightgray;
+
 }
+
+nav a{
+  color: gray;
+  text-decoration: none;
+  margin: 10px;
+}
+
+nav a.router-link-exact-active {
+  color: black;
+  font-weight: 800;
+}
+
 
 </style>

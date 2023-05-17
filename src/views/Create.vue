@@ -42,12 +42,20 @@ export default {
 
 
 <template>
-  <form id="form" action="">
+  <div class="container">
+    <form id="form" action="">
     <input v-model="formData.title" placeholder="Título">
-    <textarea v-model="formData.content" placeholder="Message"></textarea>
+    <textarea v-model="formData.content" placeholder="Message" rows="30"></textarea>
 
     <button type="submit" @click="submitForm">Criar</button>
   </form>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.container{
+  width: 100vw;
+}
+
+
+</style>
