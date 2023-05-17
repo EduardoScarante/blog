@@ -1,4 +1,7 @@
-body{
-    margin: 0px;
-    padding: 0px;
+@import "form.css";
+
+body {
+  margin: 0px;
+  padding: 0px;
+
 }
