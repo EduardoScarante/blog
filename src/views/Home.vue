@@ -47,7 +47,7 @@ export default {
 
 <style scoped>
 .container{
-  width: 104vw;
+  width: 100vw;
 }
 
 #searchInput {
