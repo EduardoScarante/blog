@@ -45,7 +45,7 @@ export default {
   <div class="container">
     <form id="form" action="">
     <input v-model="formData.title" placeholder="Título">
-    <textarea v-model="formData.content" placeholder="Message" rows="30"></textarea>
+    <textarea v-model="formData.content" placeholder="Message" rows="15"></textarea>
 
     <button type="submit" @click="submitForm">Criar</button>
   </form>
@@ -53,8 +53,49 @@ export default {
 </template>
 
 <style scoped>
-.container{
-  width: 100vw;
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+form > * {
+  background-color: white;
+  box-shadow: 3px 3px 15px lightgray;
+  border: none;
+
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+
+  width: 500px;
+  padding: 10px;
+  margin-top: 5px;
+
+  border: 3px;
+}
+
+form button {
+  background-color: rgb(53, 53, 53);
+  color: whitesmoke;
+  font-weight: 800;
+  width: 100px;
+  border-radius: 10px;
+
+  transition: 1s;
+}
+
+form button:hover {
+  background-color: #2b1a1a;
+  box-shadow: 3px 3px 0px lightcoral;
+}
+
+@media (max-width: 600px) {
+  form > * {
+    width: 85vw;
+  }
 }
 
 
