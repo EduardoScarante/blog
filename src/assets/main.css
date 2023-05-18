@@ -1,11 +1,9 @@
-@import "form.css";
-
-
-body {
+html, body, input{
   margin: 0px;
   padding: 0px;
+  width: 100vw;
+
 
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-
-  overflow-x: hidden;
 }
+

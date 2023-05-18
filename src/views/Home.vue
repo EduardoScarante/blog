@@ -28,13 +28,14 @@ export default {
 
 <template>
   <div class="container">
+
     <div id="searchBox">
-      <input id="searchInput" type="text" v-model="titleSearch" placeholder="Procure pelo título do Post...">
+      <input type="text" v-model="titleSearch" placeholder="  Procure pelo título do Post...">
     </div>
 
     <div id="lista-posts">
       <div class="post center" v-for="x in 
-                filteredPost" :key="x.title">
+                              filteredPost" :key="x.title">
         <div>
           <h3>{{ x.title }}</h3>
           <p>{{ x.content }}</p>
@@ -46,11 +47,21 @@ export default {
 </template>
 
 <style scoped>
-.container{
-  width: 100vw;
+.container {
+  width: 100%;
+  max-width: 1280px;
+
+  margin: auto;
 }
 
-#searchInput {
+#searchBox {
+  width: 100%;
+  text-align: center;
+
+  margin-top: 10px;
+}
+
+#searchBox>* {
   background-color: white;
   box-shadow: 3px 3px 15px lightgray;
   border: none;
@@ -58,24 +69,18 @@ export default {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 
   width: 500px;
-  padding: 10px;
-  margin-top: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
   border: 3px;
+
 }
 
-#searchBox {
-  text-align: center;
-
-  padding-top: 10px;
-}
 
 #lista-posts {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-
-  justify-content: center;
 
   justify-content: center;
 
@@ -95,7 +100,8 @@ export default {
 
   border-radius: 10px;
   padding: 10px;
-  margin: 10px;
+  margin: 10px 10px 0px 10px;
+  /* margin: top direita baixo esquerda */
 }
 
 .post h4 {
@@ -105,15 +111,17 @@ export default {
   text-align: end;
 }
 
+
 @media (max-width: 600px) {
 
-  form>*,
-  #searchInput {
-    width: 100vw;
+  #searchBox>* {
+    width: 95%;
+    border-radius: 5px;
   }
 
   .post {
     width: 100vw;
   }
+
 }
 </style>
