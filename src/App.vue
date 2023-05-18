@@ -56,36 +56,6 @@ export default {
           title: 'Já esse, podemos concluir sim que é o décimo post',
           content: 'Conteudo do décimo post :)',
           datetime: '18/5/2023'
-        },
-        {
-          title: 'Post para testar responsividade',
-          content: 'Conteudo do post para teste :)',
-          datetime: '18/5/2023'
-        },
-        {
-          title: 'Post para testar responsividade',
-          content: 'Conteudo do post para teste :)',
-          datetime: '18/5/2023'
-        },
-        {
-          title: 'Post para testar responsividade',
-          content: 'Conteudo do post para teste :)',
-          datetime: '18/5/2023'
-        },
-        {
-          title: 'Post para testar responsividade',
-          content: 'Conteudo do post para teste :)',
-          datetime: '18/5/2023'
-        },
-        {
-          title: 'Post para testar responsividade',
-          content: 'Conteudo do post para teste :)',
-          datetime: '18/5/2023'
-        },
-        {
-          title: 'Post para testar responsividade',
-          content: 'Conteudo do post para teste :)',
-          datetime: '18/5/2023'
         }
       ]
     }
@@ -93,6 +63,9 @@ export default {
   methods: {
     addPost(objeto) {
       this.posts.push(objeto)
+    },
+    updatePost(updatedPost, id) {
+      this.posts[id] = updatedPost
     }
   }
 }
@@ -109,7 +82,13 @@ export default {
   </header>
 
   <!-- ESCUTA EVENTO E RECEBE OBJETO NA FUNÇÂO ADDPOST -->
-  <RouterView :posts="posts" @create-post="addPost" />
+  <main>
+    <RouterView 
+    :posts="posts" 
+    @create-post="addPost" 
+    @edit-post="updatePost"
+    />
+  </main>
 </template>
 
 <style>
