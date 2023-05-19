@@ -2,6 +2,7 @@
 
 export default {
     props:{
+        id: String,
         post: Object,
     },
     data() {
@@ -25,7 +26,7 @@ export default {
             }
 
             let now = new Date()
-            let dataDaPostagem = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`
+            let dataDaPostagem = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()} - ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
 
             /* PASSA OBJETO NO EVENTO */
             const obj = {
@@ -34,7 +35,7 @@ export default {
                 datetime: dataDaPostagem
             }
 
-            this.editable === true ? this.$emit("edit-post", obj, this.$route.params.id) : this.$emit("create-post", obj)
+            this.editable ? this.$emit("edit-post", obj, this.id) : this.$emit("create-post", obj)
             
             this.$router.push("/")
         },
