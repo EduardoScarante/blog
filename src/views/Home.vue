@@ -24,12 +24,15 @@ export default {
       })
     }
   },
-  methods:{
-    getPostId(title){
-      for(const index in this.posts){
+  methods: {
+    getPostId(title) {
+      for (const index in this.posts) {
         const post = this.posts[index]
-        if(post.title === title) return index;
+        if (post.title === title) return index;
       }
+    },
+    deletePost(event) {
+      this.$emit("delete-post", event.target.id)
     }
   }
 }
@@ -44,17 +47,20 @@ export default {
     </div>
 
     <div id="lista-posts">
-      <div class="post center" v-for="(x) in filteredPost" :key="x.title">
+      <div class="post center" v-for="x in filteredPost" :key="x.title">
         <div>
           <h3>{{ x.title }}</h3>
           <p>{{ x.content }}</p>
           <h4><i>{{ x.datetime }}</i></h4>
         </div>
         <span class="material-symbols-outlined">
-          <RouterLink 
-          :to="`/edit/${getPostId(x.title)}`" 
-          > edit_note </RouterLink>
+          <RouterLink :to="`/edit/${getPostId(x.title)}`"> edit_note </RouterLink>
         </span>
+
+        <span @click="deletePost" :id="getPostId(x.title)" class="material-symbols-outlined">
+          delete
+        </span>
+
       </div>
     </div>
   </div>
@@ -112,7 +118,6 @@ export default {
 
   box-shadow: 4px 4px 15px lightgray;
 
-  border-radius: 10px;
   padding: 10px;
   margin: 10px 10px 0px 10px;
   /* margin: top direita baixo esquerda */

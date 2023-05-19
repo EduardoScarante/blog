@@ -72,6 +72,9 @@ export default {
     updatePost(updatedPost, id) {
       
       this.posts[id] = updatedPost
+    },
+    deletePost(id){
+      this.posts.splice(id, 1);
     }
   }
 }
@@ -93,6 +96,7 @@ export default {
     :posts="posts" 
     @create-post="addPost" 
     @edit-post="updatePost"
+    @delete-post="deletePost"
     />
   </main>
 </template>
