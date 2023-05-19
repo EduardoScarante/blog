@@ -70,6 +70,7 @@ export default {
       this.posts.push(objeto)
     },
     updatePost(updatedPost, id) {
+      
       this.posts[id] = updatedPost
     }
   }
