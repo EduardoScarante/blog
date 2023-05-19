@@ -4,7 +4,8 @@ import { RouterLink } from 'vue-router'
 export default {
   data() {
     return {
-      titleSearch: ''
+      titleSearch: '',
+      showModal: false,
     }
   },
   props: {
@@ -31,8 +32,12 @@ export default {
         if (post.title === title) return index;
       }
     },
+    showModalConfirm(){
+      this.showModal = !this.showModal
+    },
     deletePost(event) {
       this.$emit("delete-post", event.target.id)
+      this.showModal = !this.showModal
     }
   }
 }
@@ -57,16 +62,31 @@ export default {
           <RouterLink :to="`/edit/${getPostId(x.title)}`"> edit_note </RouterLink>
         </span>
 
-        <span @click="deletePost" :id="getPostId(x.title)" class="material-symbols-outlined">
+        <span @click="showModalConfirm" 
+        :id="getPostId(x.title)" 
+        class="material-symbols-outlined">
           delete
         </span>
 
+      </div>
+    </div>
+
+    <div class="modal center-modal" v-show="showModal">
+      <div class="modal-content center-modal">
+        <h3>Deletar Post</h3>
+        <hr>
+        <p>Tem certeza que deseja deletar o post?</p>
+        <div class="modal-actions center-modal">
+          <button class="bg-error" @click="this.showModal = !showModal"> Cancelar </button>
+          <button class="bg-sucess" @click="deletePost"> Confirmar </button>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+
 .container {
   width: 100%;
   max-width: 1280px;

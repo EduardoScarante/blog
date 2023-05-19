@@ -27,7 +27,7 @@ export default {
           content: 'Conteudo do quarto post :(',
           datetime: '16/5/2023'
         },
-        {
+        /*{
           title: 'Esse eu tenho certeza que é o quinto post',
           content: 'Conteudo do quinto post :)',
           datetime: '16/5/2023'
@@ -61,7 +61,7 @@ export default {
           title: 'Já esse, podemos concluir sim que é o décimo post',
           content: 'Conteudo do décimo post :)',
           datetime: '19/5/2023'
-        }
+        } */
       ]
     }
   },
