@@ -10,15 +10,18 @@ export default {
         PostForm
     },
     data() {
+        const id = this.$route.params.id
+        
         return {
-            post: this.posts[this.$route.params.id],
+            id: id,
+            post: this.posts[id],
         }
     },
 }
 </script>
 
 <template>
-    <PostForm :post="post" />
+    <PostForm :post="post" :id="id"/>
 </template>
 
 <style></style>
