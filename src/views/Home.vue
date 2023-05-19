@@ -1,4 +1,6 @@
 <script>
+import { RouterLink } from 'vue-router'
+
 export default {
   data() {
     return {
@@ -21,6 +23,14 @@ export default {
         */
       })
     }
+  },
+  methods:{
+    getPostId(title){
+      for(const index in this.posts){
+        const post = this.posts[index]
+        if(post.title === title) return index;
+      }
+    }
   }
 }
 
@@ -34,13 +44,17 @@ export default {
     </div>
 
     <div id="lista-posts">
-      <div class="post center" v-for="x in 
-                              filteredPost" :key="x.title">
+      <div class="post center" v-for="(x) in filteredPost" :key="x.title">
         <div>
           <h3>{{ x.title }}</h3>
           <p>{{ x.content }}</p>
+          <h4><i>{{ x.datetime }}</i></h4>
         </div>
-        <h4><i>{{ x.datetime }}</i></h4>
+        <span class="material-symbols-outlined">
+          <RouterLink 
+          :to="`/edit/${getPostId(x.title)}`" 
+          > edit_note </RouterLink>
+        </span>
       </div>
     </div>
   </div>
