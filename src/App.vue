@@ -56,6 +56,11 @@ export default {
           title: 'Já esse, podemos concluir sim que é o décimo post',
           content: 'Conteudo do décimo post :)',
           datetime: '18/5/2023'
+        },
+        {
+          title: 'Já esse, podemos concluir sim que é o décimo post',
+          content: 'Conteudo do décimo post :)',
+          datetime: '19/5/2023'
         }
       ]
     }
@@ -65,6 +70,7 @@ export default {
       this.posts.push(objeto)
     },
     updatePost(updatedPost, id) {
+      
       this.posts[id] = updatedPost
     }
   }

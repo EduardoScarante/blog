@@ -9,8 +9,10 @@ export default {
             formData: {
                 title: this.post?.title || "",
                 content: this.post?.content || ""
-            },
-            data: {},
+            },            
+            editable: Boolean(this.post),
+
+            buttonName: Boolean(this.post) === true ? "Editar" : "Criar"
         }
     },
     methods: {
@@ -32,14 +34,8 @@ export default {
                 datetime: dataDaPostagem
             }
 
-            this.$emit("create-post", obj
-            )
-
-            alert(`Novo Post: 
-                Titulo: ${obj.title}
-                Mensagem: ${obj.content}`
-            )
-
+            this.editable === true ? this.$emit("edit-post", obj, this.$route.params.id) : this.$emit("create-post", obj)
+            
             this.$router.push("/")
         },
     }
@@ -59,7 +55,9 @@ export default {
                 placeholder="Message" rows="15">
             </textarea>
 
-            <button type="submit" @click="handleCreatePost">Criar</button>
+            <button type="submit" @click="handleCreatePost">
+                {{buttonName}}
+            </button>
         </form>
     </div>
 </template>

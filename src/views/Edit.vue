@@ -19,8 +19,6 @@ export default {
 
 <template>
     <PostForm :post="post" />
-
-    {{ post }}
 </template>
 
 <style></style>
