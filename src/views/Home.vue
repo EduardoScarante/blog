@@ -65,16 +65,23 @@ export default {
           <p>{{ x.content }}</p>
           <h4><i>{{ x.datetime }}</i></h4>
         </div>
-        <span class="material-symbols-outlined">
-          <RouterLink :to="`/edit/${getPostId(x.title)}`"> edit_note </RouterLink>
-        </span>
 
-        <!-- :id="getPostId(x.title)"  -->
-        <!-- Setup Modal atribui variável para mostrar dentro do corpo do modal o título do post -->
-        <!-- GetPostId retorna a posição da array -->
-        <span @click="setupModal(getPostId(x.title))" class="material-symbols-outlined">
-          delete
-        </span>
+        <div class="icons">
+          <span class="material-symbols-outlined">
+            <RouterLink :to="`/edit/${getPostId(x.title)}`"> edit_note </RouterLink>
+          </span>
+
+          <!-- :id="getPostId(x.title)"  -->
+          <!-- Setup Modal atribui variável para mostrar dentro do corpo do modal o título do post -->
+          <!-- GetPostId retorna a posição da array -->
+          <span @click="setupModal(getPostId(x.title))" class="material-symbols-outlined">
+            delete
+          </span>
+
+          <span class="material-symbols-outlined">
+            info
+          </span>
+        </div>
 
       </div>
     </div>
@@ -156,6 +163,20 @@ export default {
   color: #535353;
 
   text-align: end;
+}
+
+.icons{
+  display: flex;
+  justify-content: space-between;
+}
+
+.icons span:hover{
+  cursor: pointer;
+}
+
+.icons span a{
+  color: black;
+  text-decoration: none;
 }
 
 
