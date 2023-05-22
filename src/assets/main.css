@@ -1,11 +1,16 @@
-@import './modal.css';
+@import "./modal.css";
 
-html, body, input{
+html,
+body,
+input {
   margin: 0px;
   padding: 0px;
   width: 100vw;
 
-
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
+hr {
+  width: 85%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
