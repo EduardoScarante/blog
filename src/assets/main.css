@@ -1,3 +1,5 @@
+@import './modal.css';
+
 html, body, input{
   margin: 0px;
   padding: 0px;

@@ -4,7 +4,10 @@ import { RouterLink } from 'vue-router'
 export default {
   data() {
     return {
-      titleSearch: ''
+      titleSearch: '',
+      showModal: false,
+      selectedPost: null,
+      selectedId: null
     }
   },
   props: {
@@ -24,12 +27,24 @@ export default {
       })
     }
   },
-  methods:{
-    getPostId(title){
-      for(const index in this.posts){
+  methods: {
+    getPostId(title) {
+      for (const index in this.posts) {
         const post = this.posts[index]
-        if(post.title === title) return index;
+        if (post.title === title) return index;
       }
+    },
+    setupModal(id) {
+      /* Mostra o Modal */
+      this.showModal = !this.showModal
+
+      /* Seta variável conforme parametro da função */
+      id ? this.selectedPost = this.posts[id] : this.selectedPost = null
+    },
+    deletePost() {
+      const idToDelete = this.getPostId(this.selectedPost.title)
+      this.$emit("delete-post", idToDelete)
+      this.showModal = !this.showModal
     }
   }
 }
@@ -44,19 +59,38 @@ export default {
     </div>
 
     <div id="lista-posts">
-      <div class="post center" v-for="(x) in filteredPost" :key="x.title">
+      <div class="post center" v-for="x in filteredPost" :key="x.title">
         <div>
           <h3>{{ x.title }}</h3>
           <p>{{ x.content }}</p>
           <h4><i>{{ x.datetime }}</i></h4>
         </div>
         <span class="material-symbols-outlined">
-          <RouterLink 
-          :to="`/edit/${getPostId(x.title)}`" 
-          > edit_note </RouterLink>
+          <RouterLink :to="`/edit/${getPostId(x.title)}`"> edit_note </RouterLink>
         </span>
+
+        <!-- :id="getPostId(x.title)"  -->
+        <!-- Setup Modal atribui variável para mostrar dentro do corpo do modal o título do post -->
+        <!-- GetPostId retorna a posição da array -->
+        <span @click="setupModal(getPostId(x.title))" class="material-symbols-outlined">
+          delete
+        </span>
+
       </div>
     </div>
+
+    <div class="modal center-modal" v-show="showModal">
+      <div class="modal-content center-modal">
+        <h3>Deletar Post</h3>
+        <hr>
+        <p>Tem certeza que deseja deletar o post '{{ selectedPost?.title }}' ?</p>
+        <div class="modal-actions center-modal">
+          <button class="bg-error" @click="setupModal"> Cancelar </button>
+          <button class="bg-sucess" @click="deletePost"> Confirmar </button>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -112,7 +146,6 @@ export default {
 
   box-shadow: 4px 4px 15px lightgray;
 
-  border-radius: 10px;
   padding: 10px;
   margin: 10px 10px 0px 10px;
   /* margin: top direita baixo esquerda */
