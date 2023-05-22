@@ -6,6 +6,8 @@ export default {
     return {
       titleSearch: '',
       showModal: false,
+      selectedPost: null,
+      selectedId: null
     }
   },
   props: {
@@ -32,11 +34,16 @@ export default {
         if (post.title === title) return index;
       }
     },
-    showModalConfirm(){
+    setupModal(id) {
+      /* Mostra o Modal */
       this.showModal = !this.showModal
+
+      /* Seta variável conforme parametro da função */
+      id ? this.selectedPost = this.posts[id] : this.selectedPost = null
     },
-    deletePost(event) {
-      this.$emit("delete-post", event.target.id)
+    deletePost() {
+      const idToDelete = this.getPostId(this.selectedPost.title)
+      this.$emit("delete-post", idToDelete)
       this.showModal = !this.showModal
     }
   }
@@ -62,9 +69,10 @@ export default {
           <RouterLink :to="`/edit/${getPostId(x.title)}`"> edit_note </RouterLink>
         </span>
 
-        <span @click="showModalConfirm" 
-        :id="getPostId(x.title)" 
-        class="material-symbols-outlined">
+        <!-- :id="getPostId(x.title)"  -->
+        <!-- Setup Modal atribui variável para mostrar dentro do corpo do modal o título do post -->
+        <!-- GetPostId retorna a posição da array -->
+        <span @click="setupModal(getPostId(x.title))" class="material-symbols-outlined">
           delete
         </span>
 
@@ -75,18 +83,18 @@ export default {
       <div class="modal-content center-modal">
         <h3>Deletar Post</h3>
         <hr>
-        <p>Tem certeza que deseja deletar o post?</p>
+        <p>Tem certeza que deseja deletar o post '{{ selectedPost?.title }}' ?</p>
         <div class="modal-actions center-modal">
-          <button class="bg-error" @click="this.showModal = !showModal"> Cancelar </button>
+          <button class="bg-error" @click="setupModal"> Cancelar </button>
           <button class="bg-sucess" @click="deletePost"> Confirmar </button>
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
 <style scoped>
-
 .container {
   width: 100%;
   max-width: 1280px;
