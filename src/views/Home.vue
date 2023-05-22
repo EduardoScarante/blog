@@ -45,6 +45,9 @@ export default {
       const idToDelete = this.getPostId(this.selectedPost.title)
       this.$emit("delete-post", idToDelete)
       this.showModal = !this.showModal
+    },
+    detalhes(id){
+      this.$router.push(`/detail/${id}`)
     }
   }
 }
@@ -66,6 +69,8 @@ export default {
           <h4><i>{{ x.datetime }}</i></h4>
         </div>
 
+        <hr>
+
         <div class="icons">
           <span class="material-symbols-outlined">
             <RouterLink :to="`/edit/${getPostId(x.title)}`"> edit_note </RouterLink>
@@ -78,7 +83,7 @@ export default {
             delete
           </span>
 
-          <span class="material-symbols-outlined">
+          <span class="material-symbols-outlined" @click="detalhes(getPostId(x.title))">
             info
           </span>
         </div>
@@ -167,7 +172,7 @@ export default {
 
 .icons{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .icons span:hover{
