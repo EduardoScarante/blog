@@ -1,6 +1,8 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router'
 import '@/assets/main.css'
+import catLottie1 from "@/assets/lottie/cat1.json"
+
 
 export default {
   data() {
@@ -16,7 +18,7 @@ export default {
           content: 'Conteudo do segundo post :)',
           datetime: '15/5/2023'
         }
-        ,
+        ,/*
         {
           title: 'Esse é o Terceiro Post',
           content: 'Conteudo do Terceiro post :)',
@@ -51,7 +53,7 @@ export default {
           title: 'E muito menos esse o nono post',
           content: 'Conteudo do nono post :)',
           datetime: '18/5/2023'
-        }/*,
+        },
         {
           title: 'Já esse, podemos concluir sim que é o décimo post',
           content: 'Conteudo do décimo post :)',
@@ -62,7 +64,8 @@ export default {
           content: 'Conteudo do décimo post :)',
           datetime: '19/5/2023'
         } */
-      ]
+      ],
+      catLottie1: catLottie1,
     }
   },
   methods: {
@@ -70,10 +73,10 @@ export default {
       this.posts.push(objeto)
     },
     updatePost(updatedPost, id) {
-      
+
       this.posts[id] = updatedPost
     },
-    deletePost(id){
+    deletePost(id) {
       this.posts.splice(id, 1);
     }
   }
@@ -84,46 +87,39 @@ export default {
 <template>
   <header>
     <nav>
-      <RouterLink to="/">Home
+      <RouterLink to="/">
+        <span class="material-symbols-outlined">
+          home
+        </span>
       </RouterLink>
-      <RouterLink to="/create">Novo Post</RouterLink>
+      <RouterLink to="/create">
+        <span class="material-symbols-outlined">
+          add
+        </span>
+      </RouterLink>
     </nav>
   </header>
 
   <!-- ESCUTA EVENTO E RECEBE OBJETO NA FUNÇÂO ADDPOST -->
   <main>
-    <RouterView 
-    :posts="posts" 
-    @create-post="addPost" 
-    @edit-post="updatePost"
-    @delete-post="deletePost"
-    />
+    <RouterView :posts="posts" @create-post="addPost" @edit-post="updatePost" @delete-post="deletePost" />
   </main>
 
   <div class="iframe-box">
-    <iframe src="https://embed.lottiefiles.com/animation/14592"></iframe>
+    <!-- <iframe src="https://embed.lottiefiles.com/animation/86330"></iframe> -->
+    <lottie-player class="lottie-player" :src="catLottie1" background="transparent" loop autoplay></lottie-player>
   </div>
 </template>
 
-<style>
-.iframe-box{
-  display: flex;
-  width: 100%;
-
-  position: sticky;
-  bottom: 0;
-
-  justify-content: flex-end;
-}
-iframe{
-  border: none;
-}
-
-
+<style scoped>
 nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 50px;
   width: 100%;
-  text-align: center;
-  padding: 10px 0px;
+
   font-weight: 200;
 
   box-shadow: 4px 4px 15px lightgray;
@@ -139,5 +135,21 @@ nav a {
 nav a.router-link-exact-active {
   color: black;
   font-weight: 800;
+}
+
+
+
+.iframe-box {
+  position: absolute;
+  top: -83px;
+  left: 60%;
+  width: 250px;
+}
+
+@media (max-width: 600px) {
+
+  .iframe-box {
+    display: none;
+  }
 }
 </style>

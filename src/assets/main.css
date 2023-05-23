@@ -1,5 +1,15 @@
 @import "./modal.css";
 
+html{
+  zoom: 1.25;
+}
+
+@media (max-width: 600px) {
+  html{
+    zoom: 1;
+  }
+}
+
 html,
 body,
 input {

@@ -1,5 +1,6 @@
 <script>
 import { RouterLink } from 'vue-router'
+import catLottie from "@/assets/lottie/cat.json"
 
 export default {
   data() {
@@ -7,7 +8,8 @@ export default {
       titleSearch: '',
       showModal: false,
       selectedPost: null,
-      selectedId: null
+      selectedId: null,
+      catLottie: catLottie,
     }
   },
   props: {
@@ -56,6 +58,13 @@ export default {
 
 <template>
   <div class="container">
+
+
+    <div class="iframe-box">
+      <!-- <iframe src="https://embed.lottiefiles.com/animation/86330"></iframe> -->
+      <lottie-player class="lottie-player" :src="catLottie" background="transparent" loop autoplay></lottie-player>
+    </div>
+
 
     <div id="searchBox">
       <input type="text" v-model="titleSearch" placeholder="  Procure pelo título do Post...">
@@ -119,16 +128,19 @@ export default {
   text-align: center;
 
   margin-top: 10px;
+
 }
 
 #searchBox>* {
+  /* background-color: white; */
   background-color: white;
+
   box-shadow: 3px 3px 15px lightgray;
   border: none;
 
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 
-  width: 500px;
+  width: 520px;
   padding-top: 10px;
   padding-bottom: 10px;
 
@@ -175,12 +187,13 @@ export default {
   text-align: end;
 }
 
-.post p, .post h3{
+.post p,
+.post h3 {
   overflow-x: hidden;
   max-height: 200px;
 }
 
-.post h3{
+.post h3 {
   max-height: 100px;
 }
 
@@ -198,6 +211,29 @@ export default {
   text-decoration: none;
 }
 
+.iframe-box {
+  width: 250px;
+  height: 150px;
+  z-index: 1;
+
+  margin: auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: -10px;
+  left: 50%;
+
+  overflow: hidden;
+}
+
+.lottie-player {
+  border: none;
+  height: 500px;
+  width: 100%;
+}
 
 @media (max-width: 600px) {
 
@@ -212,5 +248,8 @@ export default {
     padding: 10px;
   }
 
+  .lottie-player , .iframe-box{
+    display: none;
+  }
 }
 </style>
