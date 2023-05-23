@@ -50,6 +50,9 @@ export default {
     },
     detalhes(id) {
       this.$router.push(`/detail/${id}`)
+    },
+    redictTo(){
+      window.open("https://eduardoscarante.github.io/vuePesonalSite/")
     }
   }
 }
@@ -62,7 +65,7 @@ export default {
 
     <div class="iframe-box">
       <!-- <iframe src="https://embed.lottiefiles.com/animation/86330"></iframe> -->
-      <lottie-player class="lottie-player" :src="catLottie" background="transparent" loop autoplay></lottie-player>
+      <lottie-player class="lottie-player" :src="catLottie" background="transparent" loop autoplay @click="redictTo"></lottie-player>
     </div>
 
 
@@ -213,7 +216,7 @@ export default {
 
 .iframe-box {
   width: 250px;
-  height: 150px;
+  height: 155px;
   z-index: 1;
 
   margin: auto;

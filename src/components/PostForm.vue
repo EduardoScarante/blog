@@ -13,7 +13,7 @@ export default {
             },            
             editable: Boolean(this.post),
 
-            buttonName: Boolean(this.post) === true ? "Editar" : "Criar"
+            buttonName: Boolean(this.post) === true ? "Salvar" : "Criar"
         }
     },
     methods: {
