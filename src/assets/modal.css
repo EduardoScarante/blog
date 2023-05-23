@@ -60,3 +60,8 @@
 .modal-actions .bg-sucess {
   background-color: lightgreen;
 }
+
+.modal-actions .bg-error:hover,
+.modal-actions .bg-sucess:hover {
+  opacity: 0.7;
+}

@@ -5,7 +5,7 @@ import '@/assets/main.css'
 export default {
   data() {
     return {
-      posts: [
+      /*posts: [
         {
           title: 'Primeiro Post',
           content: 'Conteudo do post :)',
@@ -51,7 +51,7 @@ export default {
           title: 'E muito menos esse o nono post',
           content: 'Conteudo do nono post :)',
           datetime: '18/5/2023'
-        }/*,
+        },
         {
           title: 'Já esse, podemos concluir sim que é o décimo post',
           content: 'Conteudo do décimo post :)',
@@ -61,20 +61,37 @@ export default {
           title: 'Já esse, podemos concluir sim que é o décimo post',
           content: 'Conteudo do décimo post :)',
           datetime: '19/5/2023'
-        } */
-      ]
+        } 
+      ],*/
+
+      posts: JSON.parse(localStorage.getItem("posts")) ? JSON.parse(localStorage.getItem("posts")) : [],
+      varLocalStorage: localStorage.getItem("posts"),
     }
   },
   methods: {
     addPost(objeto) {
       this.posts.push(objeto)
+      this.refreshLocalStorage()
     },
     updatePost(updatedPost, id) {
-      
       this.posts[id] = updatedPost
+      this.refreshLocalStorage()
     },
-    deletePost(id){
+    deletePost(id) {
       this.posts.splice(id, 1);
+      this.refreshLocalStorage()
+    },
+
+
+    refreshLocalStorage(){
+      localStorage.setItem("posts", JSON.stringify(this.posts))
+      this.varLocalStorage = localStorage.getItem("posts")
+    },
+
+
+    clearLocalStorage() {
+      localStorage.clear()
+      location.reload()
     }
   }
 }
@@ -90,15 +107,15 @@ export default {
     </nav>
   </header>
 
+  <button @click="clearLocalStorage">Limpar Posts</button>
+
   <!-- ESCUTA EVENTO E RECEBE OBJETO NA FUNÇÂO ADDPOST -->
   <main>
-    <RouterView 
-    :posts="posts" 
-    @create-post="addPost" 
-    @edit-post="updatePost"
-    @delete-post="deletePost"
-    />
+    <RouterView :posts="JSON.parse(varLocalStorage)" @create-post="addPost" @edit-post="updatePost"
+      @delete-post="deletePost" />
   </main>
+
+
 
   <div class="iframe-box">
     <iframe src="https://embed.lottiefiles.com/animation/14592"></iframe>
@@ -106,16 +123,18 @@ export default {
 </template>
 
 <style>
-.iframe-box{
+.iframe-box {
   display: flex;
   width: 100%;
+  height: 50px;
 
-  position: sticky;
+  position: absolute;
   bottom: 0;
 
   justify-content: flex-end;
 }
-iframe{
+
+iframe {
   border: none;
 }
 
