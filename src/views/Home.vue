@@ -46,7 +46,7 @@ export default {
       this.$emit("delete-post", idToDelete)
       this.showModal = !this.showModal
     },
-    detalhes(id){
+    detalhes(id) {
       this.$router.push(`/detail/${id}`)
     }
   }
@@ -140,7 +140,11 @@ export default {
 #lista-posts {
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+
+  /* flex-wrap: wrap; */
+
+  flex-direction: column;
 
   justify-content: center;
 
@@ -153,14 +157,15 @@ export default {
 
   background-color: white;
 
-  height: 200px;
-  width: 270px;
+  width: 500px;
 
   box-shadow: 4px 4px 15px lightgray;
 
+  margin-top: 10px;
+  margin-bottom: 10px;
+
   padding: 10px;
-  margin: 10px 10px 0px 10px;
-  /* margin: top direita baixo esquerda */
+  padding: 10px;
 }
 
 .post h4 {
@@ -170,16 +175,25 @@ export default {
   text-align: end;
 }
 
-.icons{
+.post p, .post h3{
+  overflow-x: hidden;
+  max-height: 200px;
+}
+
+.post h3{
+  max-height: 100px;
+}
+
+.icons {
   display: flex;
   justify-content: space-around;
 }
 
-.icons span:hover{
+.icons span:hover {
   cursor: pointer;
 }
 
-.icons span a{
+.icons span a {
   color: black;
   text-decoration: none;
 }
@@ -193,7 +207,9 @@ export default {
   }
 
   .post {
-    width: 100vw;
+    width: 90vw;
+
+    padding: 10px;
   }
 
 }

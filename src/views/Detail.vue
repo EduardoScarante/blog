@@ -61,7 +61,7 @@ textarea {
     outline: none;
     border: none;
     width: 100%;
-    height: 150px;
+    height: 300px;
 
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 16px;
@@ -81,6 +81,11 @@ textarea {
     border: 3px;
 }
 
+.content h3{
+    max-height: 100px;
+    overflow: auto;
+}
+
 .content h4 {
     font-weight: 100;
     color: #535353;
@@ -96,7 +101,7 @@ textarea {
 }
 
 @media (max-width: 600px) {
-    form>* {
+    .container {
         width: 85vw;
     }
 }
