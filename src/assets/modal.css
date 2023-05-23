@@ -2,13 +2,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  z-index: 5;
 }
 
 .modal {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.2);
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 
   top: 0;
   left: 0;
@@ -23,15 +25,6 @@
 
   flex-direction: column;
   animation: in 0.5s;
-}
-
-@keyframes in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 .modal-content hr {
@@ -59,4 +52,25 @@
 }
 .modal-actions .bg-sucess {
   background-color: lightgreen;
+}
+
+
+
+
+
+@keyframes in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+.iframe-box:hover{
+  cursor: pointer;
+  opacity: 0.8;
+  
 }

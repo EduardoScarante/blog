@@ -78,6 +78,9 @@ export default {
     },
     deletePost(id) {
       this.posts.splice(id, 1);
+    },
+    redictTo(){
+      window.open("https://eduardoscarante.github.io/vuePesonalSite/")
     }
   }
 }
@@ -102,12 +105,11 @@ export default {
 
   <!-- ESCUTA EVENTO E RECEBE OBJETO NA FUNÇÂO ADDPOST -->
   <main>
-    <RouterView :posts="posts" @create-post="addPost" @edit-post="updatePost" @delete-post="deletePost" />
+    <RouterView :posts="posts" @create-post="addPost" @edit-post="updatePost" @delete-post="deletePost"/>
   </main>
 
   <div class="iframe-box">
-    <!-- <iframe src="https://embed.lottiefiles.com/animation/86330"></iframe> -->
-    <lottie-player class="lottie-player" :src="catLottie1" background="transparent" loop autoplay></lottie-player>
+    <lottie-player class="lottie-player" :src="catLottie1" background="transparent" loop autoplay @click="redictTo"></lottie-player>
   </div>
 </template>
 
@@ -136,8 +138,6 @@ nav a.router-link-exact-active {
   color: black;
   font-weight: 800;
 }
-
-
 
 .iframe-box {
   position: absolute;
