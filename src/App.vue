@@ -27,7 +27,7 @@ export default {
           content: 'Conteudo do quarto post :(',
           datetime: '16/5/2023'
         },
-        /*{
+        {
           title: 'Esse eu tenho certeza que é o quinto post',
           content: 'Conteudo do quinto post :)',
           datetime: '16/5/2023'
@@ -51,7 +51,7 @@ export default {
           title: 'E muito menos esse o nono post',
           content: 'Conteudo do nono post :)',
           datetime: '18/5/2023'
-        },
+        }/*,
         {
           title: 'Já esse, podemos concluir sim que é o décimo post',
           content: 'Conteudo do décimo post :)',
@@ -99,9 +99,27 @@ export default {
     @delete-post="deletePost"
     />
   </main>
+
+  <div class="iframe-box">
+    <iframe src="https://embed.lottiefiles.com/animation/14592"></iframe>
+  </div>
 </template>
 
 <style>
+.iframe-box{
+  display: flex;
+  width: 100%;
+
+  position: sticky;
+  bottom: 0;
+
+  justify-content: flex-end;
+}
+iframe{
+  border: none;
+}
+
+
 nav {
   width: 100%;
   text-align: center;
