@@ -22,7 +22,7 @@ export default {
         {
           title: 'Gatos são animais muito leais!',
           content: 'Quem pensa que gato é interesseiro não sabe que, na verdade, eles são muito leais aos seus companheiros de casa. Eles gostam de dormir com seus humanos e são companheiros em suas tarefas até na hora que o tutor vai ao banheiro.',
-          datetime: '16/5/2023'
+          datetime: '16/05/2023 - 09:00'
         }/*,
         {
           title: 'Pode ser que essa seja o quarto Post',
