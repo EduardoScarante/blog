@@ -26,7 +26,7 @@ export default {
             }
 
             let now = new Date()
-            let dataDaPostagem = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()} - ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
+            let dataDaPostagem = `${now.getDate()}/0${now.getMonth() + 1}/${now.getFullYear()} - ${now.getHours().toString().padStart(2, "0")}:${now.getMinutes().toString().padStart(2, "0")}`
 
             /* PASSA OBJETO NO EVENTO */
             const obj = {
@@ -48,12 +48,12 @@ export default {
         <form id="form" action="">
             <input 
                 v-model="formData.title" 
-                placeholder="titulo"
+                placeholder="Titulo"
             >
 
             <textarea 
                 v-model="formData.content" 
-                placeholder="Message" rows="15">
+                placeholder="Mensagem" rows="15">
             </textarea>
 
             <button type="submit" @click="handleCreatePost">
