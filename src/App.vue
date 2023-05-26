@@ -9,21 +9,21 @@ export default {
     return {
       posts: [
         {
-          title: 'Primeiro Post',
-          content: 'Conteudo do post :)',
-          datetime: '15/5/2023'
+          title: 'O gato dorme a maior parte do tempo...',
+          content: 'Para quem acha que gatos dormem demais, isso é verdade. Pelo menos ⅔ do dia são muito bem gastos com o sono. Isso significa que em 12 anos, o gato só passa 4 anos acordado.',
+          datetime: '15/05/2023 - 09:00'
         },
         {
-          title: 'Meu Segundo Post',
-          content: 'Conteudo do segundo post :)',
-          datetime: '15/5/2023'
+          title: 'O ronronar do gato faz bem para a saúde!',
+          content: 'Ronronar é uma maneira de o felino comunicar algum sentimento. Em alguns casos, ele pode estar sentindo dor, mas, na maioria das vezes, o ronronar demonstra prazer em estar com você. A outra boa notícia é que esse ronronar faz bem para a saúde humana. De acordo com alguns cientistas, vibrações em torno de 18 e 38 Hz, podem auxiliar o organismo na recuperação até de ossos e tecidos.',
+          datetime: '16/05/2023 - 09:00'
         }
-        ,/*
+        ,
         {
-          title: 'Esse é o Terceiro Post',
-          content: 'Conteudo do Terceiro post :)',
+          title: 'Gatos são animais muito leais!',
+          content: 'Quem pensa que gato é interesseiro não sabe que, na verdade, eles são muito leais aos seus companheiros de casa. Eles gostam de dormir com seus humanos e são companheiros em suas tarefas até na hora que o tutor vai ao banheiro.',
           datetime: '16/5/2023'
-        },
+        }/*,
         {
           title: 'Pode ser que essa seja o quarto Post',
           content: 'Conteudo do quarto post :(',
